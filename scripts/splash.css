@@ -1,0 +1,53 @@
+
+* {
+	margin:0; 
+	padding:0;
+}
+
+#overlay {
+	position:fixed; 
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+
+#modal {
+	position:absolute;
+	background:url(tint20.png) 0 0 repeat;
+	background:rgba(0,0,0,0.5);
+	border-radius:6px;
+	padding:2px;
+
+}
+
+#content {
+	border-radius:6px;
+	background:#fff;
+	padding:6px;
+
+}
+
+
+#close {
+	position:absolute;
+	background-color: #0065bd;
+	font-size: 12px;
+	line-height: 10px;
+	font-family: Calibri;
+	padding: 8px;
+	display:block;
+	color: white;
+	bottom: 15px;
+	left: 200px;
+}
+
+#backgroundimg{
+	url('logo.png');
+   width:100%;
+   repeat-x;
+   background-position: bottom right;
+}

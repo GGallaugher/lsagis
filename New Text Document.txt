@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile /lsagis/pge/.htpasswd
+require valid-user

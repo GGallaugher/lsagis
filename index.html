@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/html5/" "Access-Control-Allow-Origin: http://lsagis.net">
+
+<html class="ext-strict x-viewport">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link href="scripts/css.css" rel="stylesheet" type="text/css"/>
+	
+    <style type="text/css">
+.gm-style .gm-style-cc span,
+.gm-style .gm-style-cc a,
+.gm-style .gm-style-mtc div {
+    font-size: 10px
+}
+</style>
+    <style type="text/css">
+@media print {
+    .gm-style .gmnoprint,
+    .gmnoprint {
+        display: none
+    }
+}
+
+@media screen {
+    .gm-style .gmnoscreen,
+    .gmnoscreen {
+        display: none
+    }
+}
+</style>
+    <style type="text/css">
+.gm-style {
+    font-family: Trebuchet MS;
+    font-size: 11px;
+    font-weight: 400;
+    text-decoration: none
+}
+
+.gm-style img {
+    max-width: none
+}
+</style>
+
+    <title>LSA Point Richmond Projects</title>
+
+
+
+
+
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<link rel="stylesheet" type="text/css" href="scripts/ext-all.css">
+	<script type="text/javascript" src="scripts/ext-base.js">
+</script>
+<script type="text/javascript" src="scripts/ext-all.js">
+
+</script>  <script type="text/javascript" src="scripts/proj4js-compressed.js"></script>  
+
+	<script type="text/javascript" src="scripts/app.js">
+</script>
+   
+
+
+
+<link rel="stylesheet" type="text/css" href="scripts/style.css">
+<link rel="stylesheet" type="text/css" href="scripts/xtheme-gray.css"/>
+
+ <script type="text/javascript" src="scripts/OpenLayers.js">
+</script>
+<script type="text/javascript" src="scripts/GeoExt.js">
+</script>
+	<link rel="stylesheet" type="text/css" href="scripts/all.css">
+	 <script type="text/javascript" src="scripts/gxp.js">
+</script>
+	<link rel="stylesheet" type="text/css" href="scripts/default.css">
+	 <link rel="stylesheet" type="text/css" href="scripts/default-theme-gray.css"/>
+	
+
+	 <script type="text/javascript" src="scripts/Heron.js">
+</script>
+<script type="text/javascript" src="scripts/app.js">
+</script>
+
+    <link rel="stylesheet" type="text/css" href="scripts/appcss.css"/>
+    <link rel="stylesheet" type="text/css" href="scripts/splash.css"/>
+  <link rel="stylesheet" type="text/css" href="scripts/geosilk.css"/>
+    <script style="" src="scripts/analytics.js" async="">
+</script>
+<script type="text/javascript" src="scripts/jquery.js">
+</script>
+
+
+
+
+<!-- External lib: OpenLayers -->
+
+
+<script type="text/javascript" src="scripts/ole.min.js">
+</script>
+<!-- External lib: GeoExt -->
+
+<script type="text/javascript" src="scripts/en.js">
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfaj36Kcz_AWmk-m9JXiRgGcy_PaPYiWY">
+</script>
+  
+
+<!-- Script and css resources for printpreview ux -->
+
+
+
+
+<script type="text/javascript" src="scripts/jquery.blockUI.js">
+</script>
+
+<script type="text/javascript" src="scripts/Options.js">
+</script>
+<script type="text/javascript" src="scripts/Layers.js">
+</script>
+<script type="text/javascript" src="scripts/multisearch.js">
+</script>
+<script type="text/javascript" src="scripts/Config.js">
+</script>
+ <script type="text/javascript" src="scripts/PrintPreview.js">
+</script>
+<script type="text/javascript" src="scripts/PrintPreview-en.js">
+</script>
+
+<link rel="stylesheet" type="text/css"  src="scripts/printpreview.css">
+
+<script type="text/javascript" src="scripts/printThis.js">
+</script>
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+			var startBounds = new OpenLayers.Bounds(-13730611.8526507, 4241378.71827572, -13265036.4612667, 4756795.86861863);
+			//Function to disable Google 45-degree tilt
+			function setFixes()
+			{
+			try
+				{
+				Heron.App.map.zoomToExtent(startBounds); //unrelated opportunity to zoom to extent of County
+				gHyb.mapObject.setTilt(0);
+				}
+			catch(err)
+				{
+				//This is because IE fires the onLoad event too early
+				setTimeout(function(){setFixes()}, 1000);
+				}
+
+			};
+		
+		//Function to create Ext windows for instructions and report
+			function makeWindow()
+			{
+				OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+				//Heron.App.map.zoomToMaxExtent();
+				win = new Ext.Window({
+					applyTo:'welcome_instr',
+					layout:'fit',
+					width:800,
+					height:600,
+					closeAction:'hide',
+					plain: true,
+
+					items: new Ext.TabPanel({
+						applyTo: 'welcome_instr_tabs',
+						autoTabs:true,
+						activeTab:0,
+						deferredRender:false,
+						border:false,
+						defaults:{ autoScroll:true }
+					})
+				});
+				
+				reportWin = new Ext.Window({
+					applyTo:'report_win',
+					layout:'fit',
+					width: 800,
+					height: 700,
+					closeAction:'hide',
+					plain: true,
+					autoscroll: true,
+					
+					items: new Ext.TabPanel({
+						applyTo: 'report_win_tabs',
+
+						autoTabs:true,
+						activeTab:0,
+						deferredRender:false,
+						border:false,
+						defaults:{ autoScroll:true }
+					})				
+				});
+			};
+					
+</script>
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84081604-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+<body onload="setFixes(); makeWindow(); ">
+<div id="welcome_instr" class="x-hidden">
+    <div class="x-window-header">Solano HCP Geobrowser</div>
+    <div id="welcome_instr_tabs">
+        <!-- Auto create tab  -->
+        <div class="x-tab" title="Instructions" style="margin: 10px;">
+			<h1>How To Use The Geobrowser</h1><br>
+			<p>The geobrowser displays mapping data as a series of layers, listed in the left-hand column, each with a check box to switch their visibility on or off.
+				The layers are organized into "Base Layers" and "Overlays" groups.  Base layers provide satellite imagery, terrain, and street maps as a foundation onto 
+				which the overlay layers are displayed. Some layers (e.g. Parcels, Species) are only visible at limited zoom levels.</p><br>
+			<p>Double-click on the map to zoom in and center the display at that location.  Hold down the shift key to draw a zoom extent.<br><br> <b>Left-clicking the 'plus' sign next to a 
+			layer will expand a layer group. Right-clicking on a layer on the left-hand side will allow you to zoom to the layer's extent and change the layer's opacity.<br><br>
+			</b> </p><br>
+			<h1>The Toolbar</h1>
+			<img src="./resources/instructionstoolbar.png">
+
+			<p>The toolbar is located above the map and contains a set of tools that provide navigation, measuring, and search capabilities.  Hover the mouse over 
+				a tool to see a brief description of the tool's functionality.</p><br>
+			<h1><img src="./resources/help_tool.jpg"> Instructions</h1>
+			<p>Open this window and display these instructions.</p><br>				
+
+			<h1><img src="./resources/handtool3.png"> Pan</h1>
+			<p>Click and drag to shift the contents of the map view.</p><br>
+			
+			<h1><img src="./resources/zoom_in.jpg"> Zoom In</h1>
+			<p>Zoom into the map one level, centering the display at the location clicked.</p><br>
+
+			<h1><img src="./resources/zoom_out.jpg"> Zoom Out</h1>
+			<p>Zoom out from the map one level, centering the display at the location clicked.</p><br>
+
+			<h1><img src="./resources/previous_extent.jpg"> Zoom Previous</h1>
+			<p>Click to zoom to your last location.</p><br>
+
+			<h1><img src="./resources/zoom_next.jpg"> Zoom Next</h1>
+			<p>Click to forward the map to the next location. This button is only available after having clicked Zoom Previous one or more times.</p><br>
+
+			<h1><img src="./resources/measure_length.jpg"> Measure Length</h1>
+			<p>Draw a line on the map, with the length of the line displayed below the map at the bottom of the window. Click within the map to start measuring
+				and double-click to stop. Hold down the shift key to draw freehand, making the tracing of irregular features a quick task.</p><br>
+
+			<h1><img src="./resources/measure_area.jpg"> Measure Area</h1>
+			<p>Draw a polygon on the map, with the area of the polygon displayed below the map at the bottom of the window. Click within the map to start measuring and
+			 double-click to stop. Hold down the shift key to easily draw freehand shapes around complex features.</p><br>
+			 
+			<h1><img src="./resources/feature_information.jpg"> Feature Information</h1>
+			<p>Click within the map to display attribute information from the visible layers at the location clicked. If data from more than one layer is returned,
+				 the information window will contain multiple tabs, one for each layer.</p><br>
+				 
+			<h1><img src="./resources/parcelreportbutton.png"> Generate Parcel Report</h1>
+			<p>Click on a parcel to generate a report which lists all of the HCP-relevant data located on the property. Note that only measures that apply to the selected parcel will appear.</p><br>	
+			
+			<h1><img src="./resources/areareportbutton.png"> Generate Area Report</h1>
+			<p>Use this tool to generate a report which lists all of the HCP-relevant data located within a user-drawn area. Double click when finished drawing an area to
+			generate an area report. The report will list each parcel within the user-drawn area separately.</p><br>				
+		</div>			
+    </div>
+</div>
+  <div class="download">  
+	<html>
+<body>
+
+
+
+
+</body>
+</html>
+
+</div>
+<div id="report_win" >
+    <div class="x-window-header">Property Report</div>
+	    <div id="report_win_tabs">
+        <!-- Auto create tab  -->
+        <div class="x-tab" title="Analysis Results" style="margin: 10px;" id="report">
+		<div id="printit" style="width: 150px; margin: 0 auto; color:#0055b8;"><h1 align="center" style="background-color:#EEEEEE; padding: 5px;">Print</h1></div>
+		<div id="report-content">
+		<div id="measures-form">
+		
+		</div>
+		</div>
+		</div>
+		</div>	
+</div>
+</div>
+<div class="lsa_logo">
+    <a href="http://lsa.net" target="_blank"><img src="lsa_logo.jpg" /><br></a>Page created by LSA<br></div>
+	
+        <script type="text/javascript">
+
+	var reportmap;
+geocoder = new google.maps.Geocoder();
+//Initialize map on report
+function reportMapInit() {
+    var options = {
+projection: "EPSG:900913",
+            units: "m",
+          	zoom: 4,
+		
+
+	
+						
+						theme: null,
+						numZoomLevels: 45,
+
+						zoomOnRowDoubleClick: true
+};
+
+            controls: []
+    };				
+
+
+    reportmap = new OpenLayers.Map('report-map', 'options');
+  
+
+    var parcels = new OpenLayers.Layer.WMS(
+            "Parcels 2016",
+            '/geoserver/wms?',
+            {layers: "solcty:parcels", transparent: true, format: 'image/png', tiled: true},
+            {singleTile: false, opacity: 1.0, isBaseLayer: true, visibility: true, noLegend: false, featureInfoFormat:
+            'application/vnd.ogc.gml', maxResolution: 17}
+            );
+
+  //  reportmap.addLayers([parcels]);
+   // theExtent = Heron.App.map.getExtent();
+  //  reportmap.zoomToExtent(theExtent);
+  //  reportmap.zoomIn();
+//set up the modification tools
+
+		
+</script>
+
+  </body>
+</html>
